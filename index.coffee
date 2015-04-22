@@ -14,3 +14,7 @@ module.exports = (robot, scripts) ->
       librato.configure
         email:  process.env.LIBRATO_EMAIL
         token:  process.env.LIBRATO_TOKEN
+      librato.on 'error', (err) ->
+        console.log 'error publishing librato metric:'
+        console.log err
+      librato.start()
