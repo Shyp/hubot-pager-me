@@ -2,6 +2,12 @@
 
 PagerDuty integration for Hubot
 
+## Shyp's Fork
+
+Shyp forked this library to send a metric to Librato when someone "sets off the
+pager" (currently, judged by the number of times someone asks who's on call).
+In the future we may instrument other metrics.
+
 ## Installation
 
 In your hubot repository, run:
@@ -33,7 +39,7 @@ Using a webhook requires a bit more configuration:
 
 To setup the webhooks and get the alerts in your chatrooms, you need to add the endpoint you define here (e.g /hooks) in
 the service settings of your Pagerduty accounts. You also need to define the room in which you want them to appear.
-(Unless you want to spam all the rooms with alerts, but we don't believe that should be the default behavior :)  
+(Unless you want to spam all the rooms with alerts, but we don't believe that should be the default behavior :)
 
 ## Example interactions
 
