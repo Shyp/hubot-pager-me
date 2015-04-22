@@ -37,6 +37,7 @@
 #   Jesse Newland, Josh Nicols, Jacob Bednarz, Chris Lundquist, Chris Streeter, Joseph Pierri, Greg Hoin, Michael Warkentin
 
 inspect = require('util').inspect
+Metrics = require './metrics.coffee'
 
 moment = require('moment-timezone')
 
@@ -400,6 +401,7 @@ module.exports = (robot) ->
             displaySchedule(s)
         else
           msg.send 'No schedules found!'
+    Metrics.increment 'oncall.page'
 
   robot.respond /(pager|major)( me)? services$/i, (msg) ->
     pagerDutyGet msg, "/services", {}, (json) ->
