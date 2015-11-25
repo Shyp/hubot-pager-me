@@ -385,6 +385,7 @@ module.exports = (robot) ->
 
   # who is on call?
   robot.respond /who('s|s| is|se)? (on call|oncall|on-call)( (?:for )?(.+))?/i, (msg) ->
+    msg.send "This command will be deprecated soon. Please use `#{robot.name} problem` instead."
     scheduleName = msg.match[4]
 
     displaySchedule = (s) ->
