@@ -385,24 +385,7 @@ module.exports = (robot) ->
 
   # who is on call?
   robot.respond /who('s|s| is|se)? (on call|oncall|on-call)( (?:for )?(.+))?/i, (msg) ->
-    msg.send "This command will be deprecated soon. Please use `#{robot.name} problem` instead."
-    scheduleName = msg.match[4]
-
-    displaySchedule = (s) ->
-      withCurrentOncall msg, s, (username, schedule) ->
-        msg.send "* #{username} is on call for #{schedule.name} - https://#{pagerDutySubdomain}.pagerduty.com/schedules##{schedule.id}\n"
-
-    if scheduleName?
-      withScheduleMatching msg, scheduleName, displaySchedule
-    else
-      pagerDutyGet msg, "/schedules", {}, (json) ->
-        schedules = json.schedules
-        if schedules.length > 0
-          for s in schedules
-            displaySchedule(s)
-        else
-          msg.send 'No schedules found!'
-    Metrics.increment 'oncall.page'
+    msg.send "This command is deprecated. Please use `#{robot.name} problem` instead."
 
   robot.respond /(pager|major)( me)? services$/i, (msg) ->
     pagerDutyGet msg, "/services", {}, (json) ->
